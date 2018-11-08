@@ -26,15 +26,17 @@ class Cart extends Component {
     render() {
         let cartTotal = 0
         let cart = this.props.cart.map(e => {
+            //calculating the total price of the whole cart
             cartTotal += e.price * e.quantity
             return (
-                <CartItem cartItem={e} key={e.id} updateCart={this.props.updateCart}/>
+                <CartItem cartItem={e} key={e.id}/>
             )
         })
         return (
             <div>
                 <h1>Cart</h1>
                 {cart}
+                {/* a neat way to make sure this has only 2 decimals */}
                 <p>Total ${Math.floor(cartTotal * 100) / 100}</p>
                 <button onClick={this.checkout}>Checkout</button>
             </div>
